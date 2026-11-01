@@ -35,11 +35,6 @@ const featureGroups = [
   },
 ];
 
-const connections = [
-  ["Spotify", "Search and play tracks, then control the queue in voice."],
-  ["SoundCloud", "Find tracks and add them to music playback."],
-  ];
-
 const extraFeatures = [
   "Welcome and goodbye messages",
   "Autoroles and reaction roles",
