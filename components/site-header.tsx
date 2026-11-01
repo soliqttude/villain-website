@@ -30,7 +30,7 @@ export function SiteHeader() {
             <Link key={href} href={href} className={pathname === href ? "nav-link active" : "nav-link"} onClick={() => setOpen(false)}>{label}</Link>
           ))}
           <Link href="/terms" className="nav-mobile-legal" onClick={() => setOpen(false)}>Legal</Link>
-          <a className="nav-cta" href="/support">Get started <span>↗</span></a>
+          <Link className="nav-cta" href="/commands">Explore Villain <span>↗</span></Link>
         </nav>
       </div>
     </header>
