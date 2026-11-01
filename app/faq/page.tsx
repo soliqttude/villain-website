@@ -3,15 +3,45 @@
 import { useState } from "react";
 
 const questions = [
-  ["What is Villain?", "Villain is an all-in-one Discord bot with moderation, server tools, music, community features, and more."],
-  ["How do I add Villain to my server?", "Use the Invite button in the navigation. The destination works once the site owner configures the Discord invite URL."],
-  ["Is Villain free?", "Pricing and plan details have not been published on this site. Check official Villain announcements for current information."],
-  ["How do I see the available commands?", "Visit the Commands page for the command directory. The list is being kept separate from the bot so it can be updated as features change."],
-  ["Where can I get support?", "Visit the Support page for the official support link when it becomes available."],
-  ["Is there a status page?", "Yes. The Status page is here, and live monitoring will be connected when the bot's status endpoint is ready."]
+  ["What is Villain?", "A Discord bot for the jobs servers usually split up: moderation, music, tickets, levels, giveaways, temp voice, and a long tail of smaller utilities."],
+  ["How do I add it?", "Use Add to server. If the public invite isn't live yet, that page says so. It won't send you to a guessed link."],
+  ["Does it cost money?", "This site doesn't list a price. If that changes, it'll be said here, not hidden in a command."],
+  ["Prefix or slash?", "Both. The command list shows module names. In Discord they run as slash commands and with your server prefix."],
+  ["Where's support?", "The support page. A server link goes there when there is one. Until then, the FAQ and the command list are the useful parts."],
+  ["Is the status page real?", "The page is real. Live monitoring isn't connected, and it will not invent an uptime percentage."]
 ];
 
 export default function FAQPage() {
   const [opened, setOpened] = useState<number | null>(0);
-  return <div className="page-shell narrow-page"><div className="page-hero"><div className="eyebrow">GOT QUESTIONS?</div><h1>FAQ<span>.</span></h1><p>Quick answers to the things people ask most.</p></div><div className="faq-list">{questions.map(([q,a],i) => <section className={opened === i ? "faq-item faq-open" : "faq-item"} key={q}><button className="faq-question" onClick={() => setOpened(opened === i ? null : i)} aria-expanded={opened === i}><span><small>0{i+1}</small>{q}</span><b>{opened === i ? "−" : "+"}</b></button>{opened === i && <p className="faq-answer">{a}</p>}</section>)}</div></div>;
+
+  return (
+    <div className="page-shell narrow-page">
+      <div className="page-hero">
+        <h1>FAQ</h1>
+        <p>Short answers. No tour of the product.</p>
+      </div>
+      <div className="faq-list">
+        {questions.map(([question, answer], index) => {
+          const open = opened === index;
+          return (
+            <section className={open ? "faq-item faq-open" : "faq-item"} key={question}>
+              <button
+                type="button"
+                className="faq-question"
+                onClick={() => setOpened(open ? null : index)}
+                aria-expanded={open}
+              >
+                <span>
+                  <small>0{index + 1}</small>
+                  {question}
+                </span>
+                <b>{open ? "–" : "+"}</b>
+              </button>
+              {open && <p className="faq-answer">{answer}</p>}
+            </section>
+          );
+        })}
+      </div>
+    </div>
+  );
 }

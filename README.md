@@ -1,30 +1,10 @@
-# Villain Website
+# Villain
 
-Official website for Villain, an all-in-one Discord bot.
+Website for Villain, a Discord bot. Live at [villain.best](https://villain.best).
 
-## Stack
-- Next.js App Router
-- TypeScript
-- Custom responsive CSS
-
-## Development
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
-
-## Routes
-- /
-- /commands
-- /status
-- /faq
-- /support
-- /terms
-- /privacy
-
-## Deployment
-Import this repository into Vercel and connect the `villain.best` domain in project settings.
-
-Live bot status and Discord invite integrations are intentionally not faked. Configure them when the bot's public endpoints and invite URL are ready.
+Set `BOT_INVITE_URL` to an `https://discord.com/...` invite when the public link is ready. The invite page stays honest until then.

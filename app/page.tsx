@@ -1,115 +1,135 @@
 import Link from "next/link";
 
-const featureGroups = [
-  { title: "Moderation & security", description: "Ban, kick, timeout, warn, purge, anti-raid, anti-spam, word filters and server safeguards.", commands: ["/ban", "/kick", "/timeout", "/warn", "/purge", "/antiraid"], size: "large" },
-  { title: "Music & voice", description: "Play music, manage queues and filters, and give members temporary voice channels.", commands: ["/play", "/queue", "/skip", "/filter", "/voicemaster"], size: "tall" },
-  { title: "Tickets & giveaways", description: "Create support panels, manage tickets and run community giveaways.", commands: ["/gcreate", "/gedit", "/gend", "/greroll"] },
-  { title: "Leveling", description: "Track XP, display rank cards, manage leaderboards and reward active members.", commands: ["/rank", "/leaderboard", "/addxp", "/setxp"] },
-  { title: "Server settings", description: "Configure welcome messages, logging, autoroles, prefixes and moderation roles.", commands: ["/setwelcome", "/setlogs", "/setautorole", "/setprefix"] },
-  { title: "Social & utilities", description: "Profiles, reputation, polls, reminders, embeds, tags, image tools and more.", commands: ["/fmprofile", "/fmrecent", "/poll", "/remind", "/embed"] },
+const areas = [
+  {
+    n: "01",
+    title: "Moderation",
+    text: "Bans, jails, lockdowns, raid mode, word filters. The commands you reach for when chat is on fire.",
+    cmds: "ban · kick · timeout · jail · lockdown · antiraid"
+  },
+  {
+    n: "02",
+    title: "Music",
+    text: "Queue, filters, skip, volume. It stays inside Villain, so you don't bolt on a separate music bot.",
+    cmds: "play · queue · skip · filter · volume"
+  },
+  {
+    n: "03",
+    title: "Tickets & giveaways",
+    text: "A place for staff to take questions, and giveaways for when you want people to stick around.",
+    cmds: "ticket · ticketpanel · gcreate · gend · greroll"
+  },
+  {
+    n: "04",
+    title: "Levels",
+    text: "XP, rank cards, reward roles. Turn the whole thing off if your server doesn't care.",
+    cmds: "rank · leaderboard · addxp · rewards · levelcard"
+  },
+  {
+    n: "05",
+    title: "Setup",
+    text: "Welcome messages, logs, autoroles, the prefix, and who actually counts as staff.",
+    cmds: "setwelcome · setlogs · setautorole · setprefix · setmodrole"
+  },
+  {
+    n: "06",
+    title: "Voice",
+    text: "Temporary channels members can open, rename, lock, limit, and throw away.",
+    cmds: "voicemaster · vmname · vmlock · vmlimit · vmkick"
+  }
 ];
 
-const extraFeatures = [
-  "Welcome and goodbye messages", "Autoroles and reaction roles", "Counters and server logging",
-  "XP, rank cards and reward roles", "Profiles, bios and reputation", "Ticket panels and transcripts",
-  "Giveaways and rerolls", "Music filters and playback controls", "Temporary voice channels",
-  "Polls, reminders and embeds", "Tags and custom commands", "Image tools and community games",
+const samples = [
+  ["Moderation", "ban, kick, jail"],
+  ["Music", "play, queue, skip"],
+  ["Tickets", "ticket, giveaway"],
+  ["Levels", "rank, rewards"],
+  ["Voice", "lock, limit, kick"]
 ];
 
-function CommandChips({ items }: { items: string[] }) {
-  return <div className="command-chips">{items.map((item) => <code key={item}>{item}</code>)}</div>;
-}
+const extras = [
+  "Welcome and goodbye messages",
+  "Autoroles and reaction roles",
+  "Logging and counters",
+  "Profiles, bios, reputation",
+  "Polls, reminders, embeds",
+  "Tags and autoresponders",
+  "Starboard and suggestions",
+  "Last.fm and social lookups",
+  "Image commands",
+  "Stickers and emoji tools",
+  "Thread controls",
+  "Small games and jokes"
+];
 
 export default function Home() {
   return (
-    <div className="villain-home">
-      <section className="hero-section">
-        <div className="hero-copy-block">
-          <div className="hero-fact-pill">500+ COMMAND MODULES <span>·</span> 19 FEATURE AREAS</div>
-          <h1>Less bot clutter.<br /><span>More control.</span></h1>
-          <p className="hero-description">
-            Moderation, server protection, music and community tools — in one bot built to run your Discord server.
-          </p>
-          <div className="hero-actions">
-            <Link href="/invite" className="action-button action-primary">Invite Villain</Link>
-            <Link href="/commands" className="action-button action-secondary">Browse commands</Link>
-          </div>
-
-        </div>
-
-        <div className="hero-visual" aria-label="Villain command categories and example commands">
-          <div className="preview-label"><span>COMMAND DIRECTORY</span><span>FEATURE OVERVIEW</span></div>
-          <div className="discord-preview">
-            <div className="discord-preview-top">
-              <div className="discord-avatar">V</div>
-              <div><strong>Villain</strong><small>SERVER TOOLKIT</small></div>
-              <span className="preview-live">COMMANDS</span>
+    <div className="wrap">
+      <section className="hero">
+        <h1>
+          The bot you add <span className="mark">instead of five.</span>
+        </h1>
+        <div className="hero-grid">
+          <div>
+            <p className="lead">
+              Moderation, music, tickets, levels, giveaways, and temporary voice channels. Prefix and slash commands, one bot.
+            </p>
+            <div className="hero-actions">
+              <Link href="/invite" className="btn">Add to server</Link>
+              <Link href="/commands" className="btn btn-ghost">Command list</Link>
             </div>
-            <div className="preview-rule" />
-            <div className="response-heading"><span className="response-accent" /> <strong>Moderation &amp; management</strong></div>
-            <p className="response-copy">Examples from the current command modules.</p>
-            <div className="response-fields">
-              <div><span>MODERATION</span><strong>,ban · ,kick · ,warn</strong></div>
-              <div><span>COMMUNITY</span><strong>,ticket · ,giveaway</strong></div>
-              <div><span>MUSIC</span><strong>,play · ,queue · ,skip</strong></div>
-              <div><span>UTILITY</span><strong>,poll · ,remind · ,embed</strong></div>
-            </div>
-            <div className="preview-footer"><span>MODULE EXAMPLES</span><span>BROWSE ALL</span></div>
           </div>
-          <p className="preview-disclaimer">Command examples from the repository source tree.</p>
+          <div>
+            <p className="sample-label">From the command list</p>
+            <div className="sample">
+              {samples.map(([name, cmds]) => (
+                <div className="sample-row" key={name}>
+                  <strong>{name}</strong>
+                  <span>{cmds}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="proof-strip" aria-label="Villain capabilities">
-        <div><strong>19</strong><span>public feature areas</span></div>
-        <div><strong>Prefix + slash</strong><span>command access</span></div>
-      </section>
-
-      <section className="category-section" id="features">
-        <div className="section-heading">
-          <div><div className="eyebrow">THE TOOLKIT</div><h2>Tools for the way<br /><span>your server runs.</span></h2></div>
-          <p>Use the features you need, from staff moderation to music and member activity.</p>
+      <section className="section" id="features">
+        <div className="section-head">
+          <h2>What people add it for</h2>
+          <p>The jobs that usually end up split across a handful of bots.</p>
         </div>
-        <div className="category-grid">
-          {featureGroups.map((group) => (
-            <article className={`category-card ${group.size === "large" ? "category-card-wide" : ""} ${group.size === "tall" ? "category-card-tall" : ""}`} key={group.title}>
-              <h3>{group.title}</h3>
-              <p>{group.description}</p>
-              <CommandChips items={group.commands} />
+        <div>
+          {areas.map((area) => (
+            <article className="area" key={area.n}>
+              <div className="area-n">{area.n}</div>
+              <div>
+                <h3>{area.title}</h3>
+                <p>{area.text}</p>
+              </div>
+              <p className="area-cmds">{area.cmds}</p>
             </article>
           ))}
         </div>
-        <div className="section-link-wrap"><Link href="/commands" className="text-link">Browse the command directory</Link></div>
       </section>
 
-      <section className="extras-section">
-        <div className="section-heading extras-heading">
-          <div><div className="eyebrow">MORE BUILT IN</div><h2>And the everyday<br /><span>server essentials.</span></h2></div>
-          <p>A wider set of tools for members and staff, ready when you need them.</p>
-        </div>
-        <ul className="extras-list">
-          {extraFeatures.map((feature) => <li key={feature}>{feature}</li>)}
+      <section className="also">
+        <h2>And the smaller stuff</h2>
+        <ul className="also-list">
+          {extras.map((item) => <li key={item}>{item}</li>)}
         </ul>
       </section>
 
-      <section className="trust-section">
-        <div className="trust-copy">
-          <div className="eyebrow">STRAIGHT UP</div>
-          <h2>No made-up<br /><span>uptime numbers.</span></h2>
-          <p>Live monitoring is not connected yet. The status page tells you exactly that instead of showing an invented percentage.</p>
+      <section className="note">
+        <div>
+          <h2>No fake uptime.</h2>
+          <p>Monitoring isn't connected. The status page says that in plain text instead of inventing a percentage.</p>
         </div>
-        <Link href="/status" className="status-link"><span className="status-link-dot" /> View current service status</Link>
+        <Link href="/status" className="text-link">Read the status</Link>
       </section>
 
-      <section className="closing-section">
-        <div className="closing-panel">
-          <div className="closing-content">
-            <div className="eyebrow">VILLAIN FOR DISCORD</div>
-            <h2>Run your server<br /><span>with Villain.</span></h2>
-            <p>Bring moderation, protection and community tools into one place.</p>
-            <Link href="/invite" className="action-button action-primary">Invite Villain</Link>
-          </div>
-        </div>
+      <section className="close">
+        <h2>Put Villain on the server.</h2>
+        <Link href="/invite" className="btn">Add to server</Link>
       </section>
     </div>
   );

@@ -664,10 +664,14 @@ export default function CommandsPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
   const categories = ["All", ...groups.map((group) => group.name)];
+  const total = groups.reduce((sum, group) => sum + group.commands.length, 0);
   const filtered = useMemo(
     () => groups
       .filter((group) => category === "All" || group.name === category)
-      .map((group) => ({ ...group, commands: group.commands.filter((command) => command.toLowerCase().includes(query.toLowerCase())) }))
+      .map((group) => ({
+        ...group,
+        commands: group.commands.filter((command) => command.toLowerCase().includes(query.toLowerCase()))
+      }))
       .filter((group) => group.commands.length > 0),
     [query, category]
   );
@@ -675,18 +679,31 @@ export default function CommandsPage() {
   return (
     <div className="page-shell">
       <div className="page-hero">
-        <div className="eyebrow">THE TOOLKIT</div>
-        <h1>Commands<span>.</span></h1>
-        <p>Search the command modules in Villain's current source tree, or browse by category.</p>
+        <h1>Commands</h1>
+        <p>{total} modules across {groups.length} categories, taken from the Villain source tree. Search if you already know the name.</p>
       </div>
       <div className="command-toolbar">
         <label className="search-box">
-          <span>⌕</span>
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search commands..." aria-label="Search commands" />
+          <span>Search commands</span>
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search by name"
+            aria-label="Search commands"
+            autoComplete="off"
+          />
         </label>
-        <div className="filter-row">
+        <div className="filter-row" aria-label="Categories">
           {categories.map((item) => (
-            <button key={item} onClick={() => setCategory(item)} className={category === item ? "filter-chip selected" : "filter-chip"}>{item}</button>
+            <button
+              key={item}
+              type="button"
+              onClick={() => setCategory(item)}
+              className={category === item ? "filter-chip selected" : "filter-chip"}
+              aria-pressed={category === item}
+            >
+              {item}
+            </button>
           ))}
         </div>
       </div>
@@ -694,17 +711,22 @@ export default function CommandsPage() {
         {filtered.map((group) => (
           <section className="command-group" key={group.name}>
             <div className="command-group-head">
-              <div><h2>{group.name}</h2><p>{group.desc}</p></div>
-              <span>{group.commands.length.toString().padStart(2, "0")} MODULES</span>
+              <h2>{group.name}</h2>
+              <span>{group.commands.length}</span>
             </div>
             <div className="command-pills">
-              {group.commands.map((command) => <code key={command}>/{command}</code>)}
+              {group.commands.map((command) => <code key={command}>{command}</code>)}
             </div>
           </section>
         ))}
-        {filtered.length === 0 && <div className="empty-state"><h2>No commands found.</h2><p>Try another search or category.</p></div>}
+        {filtered.length === 0 && (
+          <div className="empty-state">
+            <h2>Nothing matches.</h2>
+            <p>Try a shorter word, or switch the category back to All.</p>
+          </div>
+        )}
       </div>
-      <p className="page-disclaimer">This directory is generated from command module filenames in the Villain repository. It does not guarantee that every module is enabled or deployed in the live bot. Owner and developer-only modules are excluded.</p>
+      <p className="page-disclaimer">Names come from command modules in the repo. A module listed here can be turned off on a given server. Owner-only tools are not listed.</p>
     </div>
   );
 }
