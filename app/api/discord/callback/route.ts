@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
     });
 
     if (!tokenResponse.ok) return finish("/connect?error=token_exchange");
-    const tokenData = await tokenResponse.json() as { access_token?: string; token_type?: string };
+    const tokenData = await tokenResponse.json() as { access_token?: string };
     if (!tokenData.access_token) return finish("/connect?error=token_exchange");
 
     const userResponse = await fetch("https://discord.com/api/v10/users/@me", {
@@ -63,7 +63,7 @@ export async function GET(request: NextRequest) {
         body: JSON.stringify({
           platform_name: "Villain",
           platform_username: platformUsername,
-          metadata: {}
+          metadata: { villain_member: "1" }
         }),
         cache: "no-store"
       }
