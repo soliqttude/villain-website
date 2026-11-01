@@ -33,7 +33,7 @@ export default function Home() {
       <section className="capabilities wrap" id="features">
         <div className="section-intro"><span className="eyebrow">02 / WHAT IT DOES</span><div><h2>Everything your<br /><span>server needs.</span></h2><p>Less switching between bots. More time running your community.</p></div></div>
         <div className="feature-grid">
-          {areas.map((area, index) => <article className="feature-card" key={area.n} style={{"--card-index": index} as React.CSSProperties}>
+          {areas.map((area, index) => <article className="feature-card" key={area.n}>
             <div className="feature-top"><span>{area.n} / 06</span><span className="feature-cross">✳</span></div>
             <h3>{area.title}</h3><p>{area.text}</p>
             <div className="feature-tags">{area.cmds.map(cmd => <span key={cmd}>{cmd}</span>)}</div>
