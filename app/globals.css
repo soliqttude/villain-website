@@ -373,3 +373,53 @@ body{background:#090909;color:#f2f2f0}
  .v2-end-mark{font-size:280px;right:-12%;top:80px}
 }
 @media(prefers-reduced-motion:reduce){.v2-button,.v2-feature,.v2-feature:hover{transition:none;transform:none}}
+
+
+/* Villain visual refinement — restrained graphite with a trace of oxblood */
+:root{--bg:#080808;--panel:#101010;--panel2:#151515;--line:#292929;--text:#ededeb;--muted:#969693;--purple:#a6a6a0;--purple2:#777772;--max:1160px}
+body{background:#080808;color:#ededeb}
+::selection{background:#57272a;color:#fff}
+.site-header{background:rgba(8,8,8,.9);border-bottom-color:#202020}
+.brand-mark{background:#171313;border:1px solid #503033;color:#eee;box-shadow:none;border-radius:6px}
+.brand-dot{color:#71383b}
+.nav-link:hover,.nav-link.active{color:#f1eeee}
+.nav-cta{background:#e8e8e4;color:#111;border-radius:3px}
+.nav-cta:hover{background:#fff}
+.v2-hero{min-height:720px;gap:6vw;border-bottom-color:#222}
+.v2-kicker-line{background:#71383b}
+.v2-hero h1{font-size:clamp(62px,8vw,112px);font-weight:700;letter-spacing:-.095em;line-height:.94}
+.v2-hero h1 span{color:#777773}
+.v2-lede{max-width:430px;color:#a2a29d;font-size:14px;line-height:1.9}
+.v2-button{border-radius:2px;letter-spacing:.01em}
+.v2-button-solid{background:#e8e8e4;color:#101010}
+.v2-button-solid:hover{background:#fff}
+.v2-button-quiet{border-bottom-color:#4a3031;color:#c9c9c3}
+.v2-meta span{color:#b2b2ac}
+.v2-art-grid{opacity:.28;background-size:48px 48px}
+.v2-orbit-a{border-color:#ffffff0c}
+.v2-orbit-b{border-color:#71383b24}
+.v2-monogram{color:#ffffff05}
+.v2-console{background:linear-gradient(145deg,#141414,#0d0d0d);border-color:#383333;border-radius:3px;box-shadow:0 35px 100px #000}
+.v2-console-mark{border-color:#573437;color:#eee;border-radius:2px}
+.v2-console-state i{background:#8c5558;box-shadow:0 0 10px #71383b55}
+.v2-console-rule,.v2-console-row{border-color:#2a2525}
+.v2-console-foot{color:#8d7777}
+.v2-intro,.v2-features,.v2-integrations{border-bottom-color:#222}
+.v2-intro h2,.v2-features-heading h2,.v2-integrations h2,.v2-end h2{font-weight:680;letter-spacing:-.085em}
+.v2-intro h2 span,.v2-features-heading h2 span,.v2-end h2 span{color:#777773}
+.v2-text-link{border-bottom-color:#503033}
+.v2-text-link span,.v2-feature-arrow{color:#865255}
+.v2-feature-list,.v2-feature,.v2-platforms,.v2-platform{border-color:#292525}
+.v2-feature:hover{background:#71383b08}
+.v2-feature-id{color:#855558}
+.v2-feature-body h3{font-size:21px;font-weight:600}
+.v2-feature-body p{color:#a09f9a}
+.v2-feature-body small{color:#827d78}
+.v2-platform b{font-weight:550}
+.v2-end-mark{color:#ffffff04}
+.v2-end-label{color:#a77f80}
+.site-footer{background:#080808;border-top-color:#222}
+.footer-label{color:#8b6667}
+.footer-links a:hover{color:#eee}
+@media(max-width:850px){.v2-hero{gap:0}.v2-hero-art{margin-top:8px}}
+@media(max-width:560px){.v2-hero h1{font-size:clamp(56px,14vw,78px)}.v2-console{transform:none}.v2-feature-body h3{font-size:18px}}
