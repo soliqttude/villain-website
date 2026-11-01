@@ -42,7 +42,7 @@ export function SiteHeader() {
               {label}
             </Link>
           ))}
-          <Link className="nav-cta" href="/commands" onClick={() => setOpen(false)}>Browse commands</Link>
+          <Link className="nav-cta" href="/invite" onClick={() => setOpen(false)}>Invite</Link>
         </nav>
       </div>
     </header>
