@@ -10,12 +10,10 @@ const categories = [
 ];
 
 const integrations = [
-  { name: "Spotify", detail: "Music and listening features", mark: "S", tone: "spotify" },
-  { name: "Last.fm", detail: "Music profiles and tracking", mark: "L", tone: "lastfm" },
-  { name: "SoundCloud", detail: "Discover and play music", mark: "s", tone: "soundcloud" },
-  { name: "TikTok", detail: "Social platform tools", mark: "♪", tone: "tiktok" },
-  { name: "Instagram", detail: "Social platform tools", mark: "◎", tone: "instagram" },
-  { name: "YouTube", detail: "Video and music tools", mark: "▶", tone: "youtube" }
+  { name: "Spotify", detail: "Music link support", mark: "S", tone: "spotify" },
+  { name: "SoundCloud", detail: "Music link support", mark: "s", tone: "soundcloud" },
+  { name: "YouTube", detail: "Video and feed features", mark: "▶", tone: "youtube" },
+  { name: "Reddit", detail: "Community feed features", mark: "r", tone: "reddit" }
 ];
 
 function FeatureVisual({ type }: { type: string }) {
@@ -55,7 +53,7 @@ export default function Home() {
         <div className="bleed-feature-grid">{categories.map((item) => <article className={`bleed-feature-card feature-${item.visual}`} key={item.number}><div className="bleed-card-top"><span>{item.number} / VILLAIN</span><span>↗</span></div><FeatureVisual type={item.visual}/><div className="bleed-card-copy"><h3>{item.title}</h3><p>{item.copy}</p><div className="feature-tags">{item.tags.map(tag=><span key={tag}>{tag}</span>)}</div></div></article>)}</div>
       </section>
 
-      <section className="integration-section section-shell"><div className="feature-section-head"><div><div className="eyebrow">CONNECTED EXPERIENCES</div><h2>Bring your platforms<br/><span>closer together.</span></h2></div><p>Discover music and social features that help your community do more without leaving Discord.</p></div><div className="integration-grid">{integrations.map(item=><div className="integration-card" key={item.name}><div className={`integration-mark ${item.tone}`}>{item.mark}</div><div><strong>{item.name}</strong><small>{item.detail}</small></div><span className="integration-arrow">↗</span></div>)}</div></section>
+      <section className="integration-section section-shell"><div className="feature-section-head"><div><div className="eyebrow">CONNECTED EXPERIENCES</div><h2>Bring your platforms<br/><span>closer together.</span></h2></div><p>Connect music and community platforms through the integrations supported by Villain.</p></div><div className="integration-grid">{integrations.map(item=><div className="integration-card" key={item.name}><div className={`integration-mark ${item.tone}`}>{item.mark}</div><div><strong>{item.name}</strong><small>{item.detail}</small></div><span className="integration-arrow">↗</span></div>)}</div></section>
 
       <section className="everything-section section-shell"><div className="everything-panel"><div className="everything-copy"><div className="eyebrow">AND THERE'S MORE</div><h2>One bot.<br/><span>So much more.</span></h2><p>Explore the full command list and find the tools that fit your community. Villain keeps growing, with more ways to manage, protect, and bring your server together.</p><Link href="/commands" className="button button-primary">View all commands <span>↗</span></Link></div><div className="command-cloud"><span>moderation</span><span>antinuke</span><span>music</span><span>tickets</span><span>giveaways</span><span>voicemaster</span><span>logging</span><span>levels</span><span>utility</span><span>and more</span></div><div className="everything-watermark">V</div></div></section>
 
