@@ -5,7 +5,8 @@ type Props = {
 };
 
 const errors: Record<string, string> = {
-  not_configured: "Discord connection is not configured yet. The site owner needs to add the OAuth environment variables.",
+  not_configured: "Discord connection is not configured yet. Add DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, DISCORD_BOT_TOKEN and DISCORD_REDIRECT_URI to Vercel.",
+  metadata_registration: "Discord rejected Villain's Linked Role setup. Check that DISCORD_BOT_TOKEN belongs to this application and try again.",
   cancelled: "You cancelled the Discord authorization.",
   invalid_state: "The authorization expired or could not be verified. Please try again.",
   token_exchange: "Discord could not complete the authorization. Please try again.",
@@ -24,15 +25,15 @@ export default async function ConnectPage({ searchParams }: Props) {
       <h1>Connect your Discord.</h1>
       {params.connected === "1" ? (
         <>
-          <p className="dek">Your Discord profile connection has been updated. Check your profile's Apps section.</p>
+          <p className="dek">Your Discord Linked Role connection has been updated. Return to your server's Linked Roles screen to claim the role.</p>
           <p><Link className="btn" href="/">Back to Villain</Link></p>
         </>
       ) : (
         <>
-          <p className="dek">Connect your Discord account to show Villain on your profile. Discord will ask you to authorize the connection.</p>
+          <p className="dek">Connect your Discord account to verify your Villain Linked Role.</p>
           {message && <p role="alert" className="dek">{message}</p>}
-          <p><a className="btn" href="/api/discord/connect">Connect with Discord</a></p>
-          <p className="page-disclaimer">You'll be redirected to Discord to approve this connection. Villain only requests the permissions needed to publish its profile connection.</p>
+          <p><a className="btn" href="/linked-role">Connect with Discord</a></p>
+          <p className="page-disclaimer">You'll be redirected to Discord to authorize the connection.</p>
         </>
       )}
     </section>
