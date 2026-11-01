@@ -1,145 +1,175 @@
 import Link from "next/link";
 
-const groups = [
+const featureGroups = [
   {
-    name: "Moderation",
-    description: "Handle staff actions and keep conversations under control.",
-    commands: ["/ban", "/kick", "/timeout", "/warn", "/purge"],
-    tone: "wide"
+    title: "Moderation",
+    description: "Handle the day-to-day work of keeping a server in order.",
+    commands: [",ban", ",kick", ",timeout", ",warn", ",purge", ",lock"],
+    size: "large",
   },
   {
-    name: "Protection",
-    description: "Security tools for server owners and moderators.",
-    commands: ["/antinuke", "/antiraid", "/security"],
-    tone: "tall"
+    title: "Server protection",
+    description: "Layer server security with automated safeguards.",
+    commands: [",antinuke", ",antiraid", ",automod", ",filter"],
+    size: "tall",
   },
   {
-    name: "Server management",
-    description: "Manage roles, channels, and the structure of your server.",
-    commands: ["/role", "/channel", "/setup"]
+    title: "Server management",
+    description: "Configure the structure and routine of your community.",
+    commands: [",setup", ",welcome", ",autorole", ",logging"],
   },
   {
-    name: "Community",
-    description: "Give members ways to participate and get involved.",
-    commands: ["/giveaway", "/level", "/rank", "/ticket"]
+    title: "Tickets & giveaways",
+    description: "Give members a clear way to get help and take part.",
+    commands: [",ticket", ",giveaway", ",suggest"],
   },
   {
-    name: "Music & voice",
-    description: "Control playback and voice features from Discord.",
-    commands: ["/play", "/pause", "/skip", "/queue"]
+    title: "Music & voice",
+    description: "Play music and manage temporary voice channels.",
+    commands: [",play", ",queue", ",skip", ",voicemaster"],
   },
   {
-    name: "Utilities",
-    description: "Useful everyday tools for members and staff.",
-    commands: ["/poll", "/remind", "/embed", "/translate"]
-  }
+    title: "Community & utility",
+    description: "Useful tools for members, profiles and everyday tasks.",
+    commands: [",rank", ",profile", ",poll", ",remind", ",translate"],
+  },
 ];
 
-const integrations = ["Spotify", "SoundCloud", "YouTube", "Reddit"];
+const connections = [
+  ["Spotify", "Search and play tracks, then control the queue in voice."],
+  ["SoundCloud", "Find tracks and add them to music playback."],
+  ["YouTube", "Find music and media for supported commands."],
+];
+
+const extraFeatures = [
+  "Welcome and goodbye messages",
+  "Autoroles and reaction roles",
+  "Counters and server logging",
+  "Levels, ranks and leaderboards",
+  "Profiles, bios and reputation",
+  "Giveaways and suggestions",
+  "Reminders and polls",
+  "Embeds and custom tags",
+  "Image and fun commands",
+  "User and server information",
+];
+
+function CommandChips({ items }: { items: string[] }) {
+  return <div className="command-chips">{items.map((item) => <code key={item}>{item}</code>)}</div>;
+}
 
 export default function Home() {
   return (
     <div className="villain-home">
       <section className="hero-section">
-        <div className="hero-orbit" aria-hidden="true" />
         <div className="hero-copy-block">
           <div className="eyebrow"><span className="eyebrow-mark" /> DISCORD BOT</div>
           <h1>Less bot clutter.<br /><span>More control.</span></h1>
           <p className="hero-description">
-            Moderation, protection, server tools, music, and community features — brought together in one Discord bot.
+            Moderation, server protection, music and community tools — in one bot built to run your Discord server.
           </p>
           <div className="hero-actions">
-            <Link href="/commands" className="action-button action-primary">Browse commands <span aria-hidden="true">→</span></Link>
-            <Link href="/faq" className="action-button action-secondary">Learn about Villain</Link>
+            <Link href="/invite" className="action-button action-primary">Invite Villain</Link>
+            <Link href="/commands" className="action-button action-secondary">Browse commands</Link>
           </div>
           <div className="hero-proof">
-            <div><strong>06</strong><span>COMMAND GROUPS</span></div>
+            <div><strong>11</strong><span>FEATURE AREAS</span></div>
             <i />
-            <div><strong>24</strong><span>EXAMPLE COMMANDS</span></div>
+            <div><strong>2</strong><span>COMMAND TYPES</span></div>
             <i />
-            <div><strong>01</strong><span>BOT</span></div>
+            <div><strong>1</strong><span>BOT</span></div>
           </div>
         </div>
 
-        <div className="hero-visual">
-          <div className="preview-label"><span>COMMAND PREVIEW</span><span>EXAMPLES</span></div>
+        <div className="hero-visual" aria-label="Illustrative preview of Villain command output">
+          <div className="preview-label"><span>INSIDE DISCORD</span><span>ILLUSTRATIVE PREVIEW</span></div>
           <div className="discord-preview">
             <div className="discord-preview-top">
               <div className="discord-avatar">V</div>
-              <div><strong>Villain</strong><small>APP · COMMAND EXAMPLES</small></div>
-              <span className="preview-live"><i /> READY</span>
+              <div><strong>Villain</strong><small>APP RESPONSE · MODERATION</small></div>
+              <span className="preview-live"><i /> BOT</span>
             </div>
             <div className="preview-rule" />
-            <div className="preview-command">
-              <span className="preview-prompt">/</span>
-              <div><strong>ban</strong><small>Ban a member from the server</small></div>
-              <kbd>MODERATION</kbd>
+            <div className="response-heading"><span className="response-accent" /> <strong>Member banned</strong></div>
+            <p className="response-copy">A moderation action has been recorded.</p>
+            <div className="response-fields">
+              <div><span>MEMBER</span><strong>@member</strong></div>
+              <div><span>MODERATOR</span><strong>@moderator</strong></div>
+              <div><span>REASON</span><strong>Rule violation</strong></div>
             </div>
-            <div className="preview-command">
-              <span className="preview-prompt">/</span>
-              <div><strong>antinuke</strong><small>Configure server protection</small></div>
-              <kbd>PROTECTION</kbd>
-            </div>
-            <div className="preview-command">
-              <span className="preview-prompt">/</span>
-              <div><strong>ticket</strong><small>Open a support ticket</small></div>
-              <kbd>COMMUNITY</kbd>
-            </div>
-            <div className="preview-command">
-              <span className="preview-prompt">/</span>
-              <div><strong>play</strong><small>Start music in a voice channel</small></div>
-              <kbd>MUSIC</kbd>
-            </div>
-            <div className="preview-footer"><span>EXAMPLE COMMANDS</span><Link href="/commands">OPEN DIRECTORY ↗</Link></div>
+            <div className="preview-footer"><span>EXAMPLE LAYOUT</span><span>NOT A LIVE CAPTURE</span></div>
           </div>
-          <p className="preview-disclaimer">Illustrative command preview · not a live Discord capture</p>
+          <p className="preview-disclaimer">Illustrative interface — actual embeds depend on command and server settings.</p>
         </div>
+      </section>
+
+      <section className="proof-strip" aria-label="Villain capabilities">
+        <div><strong>11</strong><span>feature areas</span></div>
+        <div><strong>Slash + prefix</strong><span>command access</span></div>
+        <div><strong>One bot</strong><span>server toolkit</span></div>
       </section>
 
       <section className="category-section" id="features">
         <div className="section-heading">
-          <div><div className="eyebrow">THE TOOLKIT</div><h2>Everything your<br /><span>server runs on.</span></h2></div>
-          <p>Six focused command groups. Find the tools you need without jumping between a stack of different bots.</p>
+          <div><div className="eyebrow">THE TOOLKIT</div><h2>Tools for the way<br /><span>your server runs.</span></h2></div>
+          <p>Use the features you need, from staff moderation to music and member activity.</p>
         </div>
         <div className="category-grid">
-          {groups.map((group, index) => (
-            <article className={`category-card ${group.tone === "wide" ? "category-card-wide" : ""} ${group.tone === "tall" ? "category-card-tall" : ""}`} key={group.name}>
-              <div className="category-card-top"><span className="category-index">{String(index + 1).padStart(2, "0")}</span><span>{group.commands.length} EXAMPLES</span></div>
-              <h3>{group.name}</h3>
+          {featureGroups.map((group) => (
+            <article className={`category-card ${group.size === "large" ? "category-card-wide" : ""} ${group.size === "tall" ? "category-card-tall" : ""}`} key={group.title}>
+              <h3>{group.title}</h3>
               <p>{group.description}</p>
-              <div className="command-chips">{group.commands.map(command => <code key={command}>{command}</code>)}</div>
+              <CommandChips items={group.commands} />
             </article>
           ))}
         </div>
-        <div className="section-link-wrap"><Link href="/commands" className="text-link">Explore all commands <span aria-hidden="true">→</span></Link></div>
+        <div className="section-link-wrap"><Link href="/commands" className="text-link">Browse the command directory</Link></div>
       </section>
 
       <section className="connections-section">
         <div className="connections-copy">
-          <div className="eyebrow">PLATFORM CONNECTIONS</div>
-          <h2>Your platforms.<br /><span>In the same place.</span></h2>
-          <p>Villain's site lists these platform connections. Visit the command directory for the available commands and details.</p>
+          <div className="eyebrow">CONNECTED PLATFORMS</div>
+          <h2>Music from<br /><span>your usual places.</span></h2>
+          <p>Use supported music sources without switching between separate bots.</p>
         </div>
-        <div className="integration-list">
-          {integrations.map((name, index) => (
-            <div className="integration-item" key={name}>
-              <span className="integration-number">0{index + 1}</span>
-              <strong>{name}</strong>
-              <span className="integration-mark">V</span>
-            </div>
+        <div className="integration-cards">
+          {connections.map(([name, description]) => (
+            <article className="integration-card" key={name}>
+              <div className="integration-card-top"><span className="integration-dot" /><span>SUPPORTED SOURCE</span></div>
+              <h3>{name}</h3>
+              <p>{description}</p>
+            </article>
           ))}
         </div>
+      </section>
+
+      <section className="extras-section">
+        <div className="section-heading extras-heading">
+          <div><div className="eyebrow">MORE BUILT IN</div><h2>And the everyday<br /><span>server essentials.</span></h2></div>
+          <p>A wider set of tools for members and staff, ready when you need them.</p>
+        </div>
+        <ul className="extras-list">
+          {extraFeatures.map((feature) => <li key={feature}>{feature}</li>)}
+        </ul>
+      </section>
+
+      <section className="trust-section">
+        <div className="trust-copy">
+          <div className="eyebrow">STRAIGHT UP</div>
+          <h2>No made-up<br /><span>uptime numbers.</span></h2>
+          <p>Live monitoring is not connected yet. The status page tells you exactly that instead of showing an invented percentage.</p>
+        </div>
+        <Link href="/status" className="status-link"><span className="status-link-dot" /> View current service status</Link>
       </section>
 
       <section className="closing-section">
         <div className="closing-panel">
           <div className="closing-content">
             <div className="eyebrow">VILLAIN FOR DISCORD</div>
-            <h2>Find the right<br /><span>command.</span></h2>
-            <p>Browse the directory to see the command groups, examples, and available tools.</p>
-            <Link href="/commands" className="action-button action-primary">Open command directory <span aria-hidden="true">→</span></Link>
+            <h2>Run your server<br /><span>with Villain.</span></h2>
+            <p>Bring moderation, protection and community tools into one place.</p>
+            <Link href="/invite" className="action-button action-primary">Invite Villain</Link>
           </div>
-          <div className="closing-mark" aria-hidden="true">V</div>
         </div>
       </section>
     </div>
