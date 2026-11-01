@@ -38,8 +38,7 @@ const featureGroups = [
 const connections = [
   ["Spotify", "Search and play tracks, then control the queue in voice."],
   ["SoundCloud", "Find tracks and add them to music playback."],
-  ["YouTube", "Find music and media for supported commands."],
-];
+  ];
 
 const extraFeatures = [
   "Welcome and goodbye messages",
@@ -73,7 +72,7 @@ export default function Home() {
             <Link href="/commands" className="action-button action-secondary">Browse commands</Link>
           </div>
           <div className="hero-proof">
-            <div><strong>11</strong><span>FEATURE AREAS</span></div>
+            <div><strong>6</strong><span>COMMAND CATEGORIES</span></div>
             <i />
             <div><strong>2</strong><span>COMMAND TYPES</span></div>
             <i />
@@ -104,7 +103,7 @@ export default function Home() {
       </section>
 
       <section className="proof-strip" aria-label="Villain capabilities">
-        <div><strong>11</strong><span>feature areas</span></div>
+        <div><strong>6</strong><span>command categories</span></div>
         <div><strong>Slash + prefix</strong><span>command access</span></div>
         <div><strong>One bot</strong><span>server toolkit</span></div>
       </section>
@@ -129,7 +128,7 @@ export default function Home() {
       <section className="connections-section">
         <div className="connections-copy">
           <div className="eyebrow">CONNECTED PLATFORMS</div>
-          <h2>Music from<br /><span>your usual places.</span></h2>
+          <h2>Music from<br /><span>supported sources.</span></h2>
           <p>Use supported music sources without switching between separate bots.</p>
         </div>
         <div className="integration-cards">
