@@ -25,7 +25,7 @@ export default function Home() {
     <div className="villain-home">
       <section className="hero-section">
         <div className="hero-copy-block">
-          <div className="eyebrow"><span className="eyebrow-mark" /> DISCORD BOT</div>
+          <div className="hero-fact-pill">500+ COMMAND MODULES <span>·</span> 19 FEATURE AREAS</div>
           <h1>Less bot clutter.<br /><span>More control.</span></h1>
           <p className="hero-description">
             Moderation, server protection, music and community tools — in one bot built to run your Discord server.
@@ -34,11 +34,7 @@ export default function Home() {
             <Link href="/invite" className="action-button action-primary">Invite Villain</Link>
             <Link href="/commands" className="action-button action-secondary">Browse commands</Link>
           </div>
-          <div className="hero-proof">
-            <div><strong>500+</strong><span>COMMAND MODULES</span></div>
-            <i />
-            <div><strong>19</strong><span>FEATURE AREAS</span></div>
-          </div>
+
         </div>
 
         <div className="hero-visual" aria-label="Villain command categories and example commands">
