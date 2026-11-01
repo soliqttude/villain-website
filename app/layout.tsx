@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     url: "https://villain.best",
     siteName: "Villain",
     type: "website",
-    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Villain — Less bot clutter. More control." }]
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Villain — Less bot clutter. More control." }]
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og.svg"]
+    images: ["/opengraph-image"]
   },
   icons: { icon: "/icon.svg" }
 };
