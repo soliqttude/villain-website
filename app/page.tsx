@@ -1,51 +1,19 @@
 import Link from "next/link";
 
 const featureGroups = [
-  {
-    title: "Moderation",
-    description: "Handle the day-to-day work of keeping a server in order.",
-    commands: [",ban", ",kick", ",timeout", ",warn", ",purge", ",lock"],
-    size: "large",
-  },
-  {
-    title: "Server protection",
-    description: "Layer server security with automated safeguards.",
-    commands: [",antinuke", ",antiraid", ",automod", ",filter"],
-    size: "tall",
-  },
-  {
-    title: "Server management",
-    description: "Configure the structure and routine of your community.",
-    commands: [",setup", ",welcome", ",autorole", ",logging"],
-  },
-  {
-    title: "Tickets & giveaways",
-    description: "Give members a clear way to get help and take part.",
-    commands: [",ticket", ",giveaway", ",suggest"],
-  },
-  {
-    title: "Music & voice",
-    description: "Play music and manage temporary voice channels.",
-    commands: [",play", ",queue", ",skip", ",voicemaster"],
-  },
-  {
-    title: "Community & utility",
-    description: "Useful tools for members, profiles and everyday tasks.",
-    commands: [",rank", ",profile", ",poll", ",remind", ",translate"],
-  },
+  { title: "Moderation & security", description: "Ban, kick, timeout, warn, purge, anti-raid, anti-spam, word filters and server safeguards.", commands: ["/ban", "/kick", "/timeout", "/warn", "/purge", "/antiraid"], size: "large" },
+  { title: "Music & voice", description: "Play music, manage queues and filters, and give members temporary voice channels.", commands: ["/play", "/queue", "/skip", "/filter", "/voicemaster"], size: "tall" },
+  { title: "Tickets & giveaways", description: "Create support panels, manage tickets and run community giveaways.", commands: ["/gcreate", "/gedit", "/gend", "/greroll"] },
+  { title: "Leveling", description: "Track XP, display rank cards, manage leaderboards and reward active members.", commands: ["/rank", "/leaderboard", "/addxp", "/setxp"] },
+  { title: "Server settings", description: "Configure welcome messages, logging, autoroles, prefixes and moderation roles.", commands: ["/setwelcome", "/setlogs", "/setautorole", "/setprefix"] },
+  { title: "Social & utilities", description: "Profiles, reputation, polls, reminders, embeds, tags, image tools and more.", commands: ["/fmprofile", "/fmrecent", "/poll", "/remind", "/embed"] },
 ];
 
 const extraFeatures = [
-  "Welcome and goodbye messages",
-  "Autoroles and reaction roles",
-  "Counters and server logging",
-  "Levels, ranks and leaderboards",
-  "Profiles, bios and reputation",
-  "Giveaways and suggestions",
-  "Reminders and polls",
-  "Embeds and custom tags",
-  "Image and fun commands",
-  "User and server information",
+  "Welcome and goodbye messages", "Autoroles and reaction roles", "Counters and server logging",
+  "XP, rank cards and reward roles", "Profiles, bios and reputation", "Ticket panels and transcripts",
+  "Giveaways and rerolls", "Music filters and playback controls", "Temporary voice channels",
+  "Polls, reminders and embeds", "Tags and custom commands", "Image tools and community games",
 ];
 
 function CommandChips({ items }: { items: string[] }) {
@@ -67,9 +35,9 @@ export default function Home() {
             <Link href="/commands" className="action-button action-secondary">Browse commands</Link>
           </div>
           <div className="hero-proof">
-            <div><strong>6</strong><span>COMMAND CATEGORIES</span></div>
+            <div><strong>500+</strong><span>COMMAND MODULES</span></div>
             <i />
-            <div><strong>1</strong><span>BOT</span></div>
+            <div><strong>19</strong><span>FEATURE AREAS</span></div>
           </div>
         </div>
 
@@ -83,22 +51,22 @@ export default function Home() {
             </div>
             <div className="preview-rule" />
             <div className="response-heading"><span className="response-accent" /> <strong>Moderation &amp; management</strong></div>
-            <p className="response-copy">A quick look at the tools in the command directory.</p>
+            <p className="response-copy">Examples from the current command modules.</p>
             <div className="response-fields">
               <div><span>MODERATION</span><strong>,ban · ,kick · ,warn</strong></div>
               <div><span>COMMUNITY</span><strong>,ticket · ,giveaway</strong></div>
               <div><span>MUSIC</span><strong>,play · ,queue · ,skip</strong></div>
               <div><span>UTILITY</span><strong>,poll · ,remind · ,embed</strong></div>
             </div>
-            <div className="preview-footer"><span>COMMAND EXAMPLES</span><span>VIEW DIRECTORY →</span></div>
+            <div className="preview-footer"><span>MODULE EXAMPLES</span><span>BROWSE ALL</span></div>
           </div>
-          <p className="preview-disclaimer">Browse the command directory for the current published list.</p>
+          <p className="preview-disclaimer">Command examples from the repository source tree.</p>
         </div>
       </section>
 
       <section className="proof-strip" aria-label="Villain capabilities">
-        <div><strong>6</strong><span>command categories</span></div>
-        <div><strong>One bot</strong><span>server toolkit</span></div>
+        <div><strong>19</strong><span>public feature areas</span></div>
+        <div><strong>Prefix + slash</strong><span>command access</span></div>
       </section>
 
       <section className="category-section" id="features">
