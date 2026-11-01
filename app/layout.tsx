@@ -6,21 +6,21 @@ import { SiteFooter } from "@/components/site-footer";
 export const metadata: Metadata = {
   metadataBase: new URL("https://villain.best"),
   title: {
-    default: "Villain — Discord Bot",
+    default: "Villain — Less bot clutter. More control.",
     template: "%s | Villain"
   },
-  description: "Villain is a Discord bot with moderation, information, utility, community, music, and fun commands.",
+  description: "Moderation, protection, server tools, music, and community features in one Discord bot.",
   openGraph: {
-    title: "Villain — Discord Bot",
-    description: "Moderation, information, utility, community, music, and fun commands for Discord servers.",
+    title: "Villain — Less bot clutter. More control.",
+    description: "Moderation, protection, server tools, music, and community features in one Discord bot.",
     url: "https://villain.best",
     siteName: "Villain",
     type: "website"
   },
   twitter: {
-    card: "summary",
-    title: "Villain — Discord Bot",
-    description: "Moderation, information, utility, community, music, and fun commands for Discord servers."
+    card: "summary_large_image",
+    title: "Villain — Less bot clutter. More control.",
+    description: "Moderation, protection, server tools, music, and community features in one Discord bot."
   },
   icons: { icon: "/icon.svg" }
 };
