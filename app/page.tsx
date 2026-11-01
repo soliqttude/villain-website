@@ -74,37 +74,35 @@ export default function Home() {
           <div className="hero-proof">
             <div><strong>6</strong><span>COMMAND CATEGORIES</span></div>
             <i />
-            <div><strong>2</strong><span>COMMAND TYPES</span></div>
-            <i />
             <div><strong>1</strong><span>BOT</span></div>
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Illustrative preview of Villain command output">
-          <div className="preview-label"><span>INSIDE DISCORD</span><span>ILLUSTRATIVE PREVIEW</span></div>
+        <div className="hero-visual" aria-label="Villain command categories and example commands">
+          <div className="preview-label"><span>COMMAND DIRECTORY</span><span>FEATURE OVERVIEW</span></div>
           <div className="discord-preview">
             <div className="discord-preview-top">
               <div className="discord-avatar">V</div>
-              <div><strong>Villain</strong><small>APP RESPONSE · MODERATION</small></div>
-              <span className="preview-live"><i /> BOT</span>
+              <div><strong>Villain</strong><small>SERVER TOOLKIT</small></div>
+              <span className="preview-live">COMMANDS</span>
             </div>
             <div className="preview-rule" />
-            <div className="response-heading"><span className="response-accent" /> <strong>Member banned</strong></div>
-            <p className="response-copy">A moderation action has been recorded.</p>
+            <div className="response-heading"><span className="response-accent" /> <strong>Moderation &amp; management</strong></div>
+            <p className="response-copy">A quick look at the tools in the command directory.</p>
             <div className="response-fields">
-              <div><span>MEMBER</span><strong>@member</strong></div>
-              <div><span>MODERATOR</span><strong>@moderator</strong></div>
-              <div><span>REASON</span><strong>Rule violation</strong></div>
+              <div><span>MODERATION</span><strong>,ban · ,kick · ,warn</strong></div>
+              <div><span>COMMUNITY</span><strong>,ticket · ,giveaway</strong></div>
+              <div><span>MUSIC</span><strong>,play · ,queue · ,skip</strong></div>
+              <div><span>UTILITY</span><strong>,poll · ,remind · ,embed</strong></div>
             </div>
-            <div className="preview-footer"><span>EXAMPLE LAYOUT</span><span>NOT A LIVE CAPTURE</span></div>
+            <div className="preview-footer"><span>COMMAND EXAMPLES</span><span>VIEW DIRECTORY →</span></div>
           </div>
-          <p className="preview-disclaimer">Illustrative interface — actual embeds depend on command and server settings.</p>
+          <p className="preview-disclaimer">Browse the command directory for the current published list.</p>
         </div>
       </section>
 
       <section className="proof-strip" aria-label="Villain capabilities">
         <div><strong>6</strong><span>command categories</span></div>
-        <div><strong>Slash + prefix</strong><span>command access</span></div>
         <div><strong>One bot</strong><span>server toolkit</span></div>
       </section>
 
@@ -123,23 +121,6 @@ export default function Home() {
           ))}
         </div>
         <div className="section-link-wrap"><Link href="/commands" className="text-link">Browse the command directory</Link></div>
-      </section>
-
-      <section className="connections-section">
-        <div className="connections-copy">
-          <div className="eyebrow">CONNECTED PLATFORMS</div>
-          <h2>Music from<br /><span>supported sources.</span></h2>
-          <p>Use supported music sources without switching between separate bots.</p>
-        </div>
-        <div className="integration-cards">
-          {connections.map(([name, description]) => (
-            <article className="integration-card" key={name}>
-              <div className="integration-card-top"><span className="integration-dot" /><span>SUPPORTED SOURCE</span></div>
-              <h3>{name}</h3>
-              <p>{description}</p>
-            </article>
-          ))}
-        </div>
       </section>
 
       <section className="extras-section">
