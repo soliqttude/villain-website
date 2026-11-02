@@ -24,10 +24,10 @@ export function verifyAdminSession(value?: string) {
   if (!value) return null;
   const [payload, supplied] = value.split(".");
   if (!payload || !supplied) return null;
-  const expected = Buffer.from(signature(payload));
-  const actual = Buffer.from(supplied);
-  if (expected.length !== actual.length || !timingSafeEqual(expected, actual)) return null;
   try {
+    const expected = Buffer.from(signature(payload));
+    const actual = Buffer.from(supplied);
+    if (expected.length !== actual.length || !timingSafeEqual(expected, actual)) return null;
     const data = JSON.parse(Buffer.from(payload, "base64url").toString("utf8")) as { id: string; exp: number };
     if (!data.id || data.exp < Date.now() || !isAdminId(data.id)) return null;
     return { id: data.id };
