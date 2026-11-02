@@ -13,7 +13,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-column">
           <span className="footer-label">Product</span>
-          <Link href="/commands">Commands</Link>
+          <Link href="/#commands">Command guide</Link>
           <Link href="/status">Status</Link>
           <Link href="/invite">Add to server</Link>
         </div>

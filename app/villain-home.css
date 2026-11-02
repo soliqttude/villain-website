@@ -428,6 +428,101 @@ body { font-family: "Villain Satoshi", var(--font-sans), sans-serif; }
 .site-footer .footer-bottom { max-width: 1072px; }
 @keyframes vh-blink { 50% { opacity: 0; } }
 
+/* Keep the existing inner routes in the same visual system as the landing page. */
+.page-shell,
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 66px 24px 104px;
+  color: #eff3f2;
+  font-family: "Villain Satoshi", var(--font-sans), sans-serif;
+}
+.page-hero { margin-bottom: 28px; }
+.page-hero h1,
+.page h1 {
+  max-width: 13ch;
+  color: #eff3f2;
+  font-size: clamp(42px, 5vw, 70px);
+  font-weight: 680;
+  letter-spacing: -.075em;
+  line-height: 1.02;
+}
+.page-hero > p,
+.page > p.dek,
+.page-shell > p,
+.page-shell .dek {
+  max-width: 620px;
+  color: #a4acab;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.page-shell .status-panel,
+.page-shell .plain-block,
+.page-shell .status-list,
+.page-shell .faq-list {
+  border-color: rgba(230,240,238,.11);
+}
+.page-shell .status-panel {
+  padding: 24px;
+  border: 1px solid rgba(230,240,238,.11);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(24,31,31,.9), rgba(12,16,16,.96));
+}
+.page-shell .status-panel h2,
+.page-shell .faq-question {
+  color: #eff3f2;
+  font-family: "Villain Satoshi", sans-serif;
+  letter-spacing: -.045em;
+}
+.page-shell .status-panel p,
+.page-shell .faq-answer,
+.page-shell .status-row dd,
+.page-shell .service-pending {
+  color: #a4acab;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.page-shell .status-row,
+.page-shell .status-service,
+.page-shell .faq-item {
+  border-color: rgba(230,240,238,.11);
+}
+.page-shell .faq-question:hover { color: #92c8d2; }
+.page-shell .faq-question small { color: #92c8d2; }
+.page-shell .command-toolbar {
+  border: 1px solid rgba(230,240,238,.1);
+  border-radius: 14px;
+  background: rgba(14,18,18,.96);
+  padding: 12px;
+}
+.page-shell .search-box input { color: #eff3f2; }
+.page-shell .filter-chip.selected { border-radius: 999px; background: #92c8d2; color: #111819; }
+.page-shell .command-group-head h2 { color: #eff3f2; }
+.page-shell .command-pills {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 7px;
+  border: 0;
+}
+.page-shell .command-pills code {
+  padding: 9px 11px;
+  border: 1px solid rgba(230,240,238,.09);
+  border-radius: 9px;
+  background: rgba(255,255,255,.025);
+  color: #d7e1df;
+}
+.page-shell .command-pills code:hover { padding-left: 15px; color: #92c8d2; }
+.page-shell .btn {
+  border-color: #92c8d2;
+  border-radius: 999px;
+  background: #92c8d2;
+  color: #111819;
+  font-family: "Villain Satoshi", sans-serif;
+}
+.page-shell .btn-ghost { border-color: rgba(255,255,255,.18); background: transparent; color: #eff3f2; }
+.page-shell :focus-visible,
+.site-header :focus-visible,
+.site-footer :focus-visible { outline-color: #92c8d2; }
+
 @media (max-width: 760px) {
   .site-header .nav-wrap { grid-template-columns: 1fr auto; padding: 0 18px; }
   .site-header .menu-toggle { grid-column: 2; display: grid; place-items: center; width: 39px; height: 39px; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; background: rgba(255,255,255,.045); }
@@ -492,6 +587,9 @@ body { font-family: "Villain Satoshi", var(--font-sans), sans-serif; }
   .vh-closing { min-height: 370px; padding: 55px 20px; }
   .site-footer .footer-inner { grid-template-columns: 1fr 1fr; }
   .site-footer .footer-bottom { flex-direction: column; }
+  .page-shell,.page { padding: 48px 18px 80px; }
+  .page-shell .status-panel { padding: 20px; }
+  .page-shell .command-toolbar { padding: 8px; }
 }
 @media (max-width: 440px) {
   .vh-actions { display: grid; grid-template-columns: 1fr; }
