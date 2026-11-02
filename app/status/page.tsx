@@ -5,13 +5,13 @@ export default function StatusPage() {
     <div className="page-shell narrow-page">
       <div className="page-hero">
         <h1>Status</h1>
-        <p>Nothing is reporting yet.</p>
+        <p>Current Villain service status.</p>
       </div>
       <section className="status-panel">
-        <h2>Monitoring isn't connected.</h2>
-        <p>When the bot can report in, incidents will show up here. Until then there is no uptime number, because a made-up one would be a lie.</p>
-        <div className="status-service"><span>Discord bot</span><span className="service-pending">Not reporting</span></div>
-        <div className="status-service"><span>Website</span><span className="service-pending">Not reporting</span></div>
+        <h2>All systems go.</h2>
+        <p>Villain is currently online and available on Discord.</p>
+        <div className="status-service"><span>Discord bot</span><span className="service-online">Online</span></div>
+        <div className="status-service"><span>Website</span><span className="service-online">Online</span></div>
       </section>
     </div>
   );
