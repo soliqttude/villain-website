@@ -159,7 +159,7 @@ export default function Home() {
         <h2>One toolkit<br />for your server.</h2>
         <p>Moderation, music, tickets, levels, giveaways, and voice tools—all in one place.</p>
         <Link href="/invite" className="vh-button vh-button-primary">Invite Villain <Arrow /></Link>
-        <span className="vh-closing-note">Public invite coming soon</span>
+        <span className="vh-closing-note">Available now</span>
       </section>
     </div>
   );
