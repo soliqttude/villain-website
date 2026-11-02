@@ -532,8 +532,8 @@ h1, h2 { text-wrap: balance; }
 
 
 /* Villain visual refresh */
-:root { --bg:#090a0b; --fg:#f4f4f0; --muted:#a3a6a3; --faint:#6e7471; --line:rgba(232,239,232,.12); --line-strong:rgba(232,239,232,.28); --mark:#d7ff3f; --ink:#10120a; --max:1200px; --header:76px; }
-body { background:var(--bg); background-image:radial-gradient(ellipse at 78% 0%,rgba(130,160,40,.09),transparent 36rem); }
+:root { --bg:#0c0d0d; --fg:#eff3f2; --muted:#a4acab; --faint:#737e7b; --line:rgba(230,240,238,.11); --line-strong:rgba(230,240,238,.28); --mark:#92c8d2; --ink:#111819; --max:1200px; --header:76px; }
+body { background:var(--bg); background-image:radial-gradient(ellipse at 78% 0%,rgba(52,104,111,.1),transparent 36rem); }
 .site-header { background:rgba(9,10,11,.82); backdrop-filter:blur(18px); border-color:var(--line); }
 .brand-mark { width:28px;height:28px;border-radius:9px;transform:rotate(-8deg);box-shadow:0 0 24px rgba(215,255,63,.25);position:relative; }
 .brand-mark:after { content:"V";position:absolute;inset:0;display:grid;place-items:center;color:var(--ink);font-weight:900;font-size:17px;transform:rotate(8deg); }

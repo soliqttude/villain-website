@@ -5,10 +5,10 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 const links = [
-  ["/commands", "Commands"],
-  ["/status", "Status"],
-  ["/faq", "FAQ"],
-  ["/support", "Support"]
+  ["commands", "Commands"],
+  ["features", "Features"],
+  ["setup", "Setup"],
+  ["faq", "FAQ"]
 ] as const;
 
 export function SiteHeader() {
@@ -34,20 +34,31 @@ export function SiteHeader() {
           <span />
         </button>
         <nav id="primary-navigation" className={open ? "nav-links nav-open" : "nav-links"}>
-          {links.map(([href, label]) => (
+          {links.map(([section, label]) => {
+            const href = section === "faq"
+              ? "/faq"
+              : pathname === "/"
+                ? `#${section}`
+                : `/#${section}`;
+            const active = section === "faq"
+              ? pathname.startsWith("/faq")
+              : section === "commands"
+                ? pathname.startsWith("/commands")
+                : false;
+            return (
             <Link
-              key={href}
+              key={section}
               href={href}
-              className={pathname === href ? "nav-link is-active" : "nav-link"}
+              className={active ? "nav-link is-active" : "nav-link"}
               onClick={() => setOpen(false)}
             >
               {label}
             </Link>
-          ))}
-          <Link className="btn nav-cta" href="/invite" onClick={() => setOpen(false)}>
-            Add to server
-          </Link>
+            );
+          })}
+          <Link className="vh-mobile-cta" href="/invite" onClick={() => setOpen(false)}>Add to Discord <span aria-hidden="true">↗</span></Link>
         </nav>
+        <Link className="btn nav-cta" href="/invite">Add to Discord <span aria-hidden="true">↗</span></Link>
       </div>
     </header>
   );

@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteIntro } from "@/components/site-intro";
+import "./villain-home.css";
 
 const sans = Familjen_Grotesk({
   subsets: ["latin"],
