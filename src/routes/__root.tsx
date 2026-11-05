@@ -72,7 +72,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#060607" },
       { title: "Villain — All-in-one Discord bot" },
-      { name: "description", content: "Moderation, protection, music and community tools for Discord in one bot." },
+      { name: "description", content: "Moderation, engagement and server management in one Discord bot." },
       { property: "og:site_name", content: "Villain" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
