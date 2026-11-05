@@ -1,13 +1,13 @@
 /**
- * Central site links. Replace these with Villain's real URLs.
- * If inviteUrl is empty, invite buttons route to the Support page instead of a dead link.
+ * Central site links.
+ * Configure invite and support URLs when their public Discord links are ready.
  */
 export const site = {
   name: "Villain",
-  inviteUrl: "", // e.g. https://discord.com/oauth2/authorize?client_id=YOUR_ID&permissions=8&scope=bot+applications.commands
-  supportServerUrl: "", // e.g. https://discord.gg/yourcode
-  statusUrl: "", // external status page, if any
-  url: "https://villain.bot",
+  inviteUrl: "",
+  supportServerUrl: "",
+  statusUrl: "",
+  url: "https://villain.best",
 };
 
 export const navLinks = [

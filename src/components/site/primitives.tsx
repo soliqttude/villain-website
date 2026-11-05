@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
-import { Sparkles, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import type { ButtonHTMLAttributes } from "react";
 
 export function IconButton({ className, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
@@ -12,48 +12,29 @@ export function IconButton({ className, ...props }: ButtonHTMLAttributes<HTMLBut
 export function Logo({ className }: { className?: string }) {
   return (
     <Link to="/" className={cn("flex items-center gap-2.5", className)} aria-label="Villain home">
-      <span className="grid size-9 place-items-center">
-        <svg viewBox="0 0 24 24" className="size-7 text-primary" fill="currentColor" aria-hidden>
-          <path d="M3 4h4.2L12 15.6 16.8 4H21l-7.4 16h-3.2L3 4Z" />
-        </svg>
-      </span>
+      <svg viewBox="0 0 24 24" className="size-6 text-foreground" fill="currentColor" aria-hidden>
+        <path d="M3 4h4.2L12 15.6 16.8 4H21l-7.4 16h-3.2L3 4Z" />
+      </svg>
       <span className="text-lg font-semibold">villain</span>
     </Link>
   );
 }
 
-const btnBase =
-  "group inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+const btnBase = "group inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const variants = {
-  primary: "border border-primary bg-primary text-primary-foreground hover:bg-primary/90",
-  ghost: "border border-border bg-card text-foreground hover:bg-elevated",
+  primary: "border border-foreground bg-foreground text-background hover:bg-foreground/90",
+  ghost: "border border-border-strong bg-transparent text-foreground hover:bg-elevated",
 };
 const sizes = { sm: "h-10 px-4", lg: "h-12 px-6" };
 
-export function InviteButton({ size = "lg", className, label = "Invite Villain" }: { size?: "sm" | "lg"; className?: string; label?: string }) {
+export function InviteButton({ size = "lg", className, label = "Invite to Discord" }: { size?: "sm" | "lg"; className?: string; label?: string }) {
   const cls = cn(btnBase, variants.primary, sizes[size], className);
-  if (site.inviteUrl)
-    return (
-      <a href={site.inviteUrl} target="_blank" rel="noreferrer" className={cls}>
-        <Sparkles className="size-4" />
-        {label}
-      </a>
-    );
-  return (
-    <Link to="/support" className={cls}>
-      <Sparkles className="size-4" />
-      {label}
-    </Link>
-  );
+  if (site.inviteUrl) return <a href={site.inviteUrl} target="_blank" rel="noreferrer" className={cls}>{label}</a>;
+  return <Link to="/support" className={cls}>{label}</Link>;
 }
 
 export function GhostLink({ to, children, size = "lg" }: { to: "/commands" | "/status" | "/support" | "/faq"; children: ReactNode; size?: "sm" | "lg" }) {
-  return (
-    <Link to={to} className={cn(btnBase, variants.ghost, sizes[size])}>
-      {children}
-      <ChevronRight className="size-4 text-primary transition-transform group-hover:translate-x-0.5" />
-    </Link>
-  );
+  return <Link to={to} className={cn(btnBase, variants.ghost, sizes[size])}>{children}<ChevronRight className="size-4 text-subtle transition-transform group-hover:translate-x-0.5" /></Link>;
 }
 
 export function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
@@ -61,61 +42,27 @@ export function Reveal({ children, className, delay = 0 }: { children: ReactNode
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e?.isIntersecting) {
-          el.dataset["shown"] = "true";
-          io.disconnect();
-        }
-      },
-      { rootMargin: "0px 0px -8% 0px" },
-    );
+    const io = new IntersectionObserver(([e]) => {
+      if (e?.isIntersecting) { el.dataset["shown"] = "true"; io.disconnect(); }
+    }, { rootMargin: "0px 0px -8% 0px" });
     io.observe(el);
     return () => io.disconnect();
   }, []);
-  return (
-    <div ref={ref} className={cn("reveal", className)} style={{ transitionDelay: `${delay}ms` }}>
-      {children}
-    </div>
-  );
+  return <div ref={ref} className={cn("reveal", className)} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
 }
 
 export function Eyebrow({ children }: { children: ReactNode }) {
-  return (
-    <p className="mb-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-subtle">
-      <span className="size-1.5 rounded-full bg-oxblood" />
-      {children}
-    </p>
-  );
+  return <p className="mb-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-subtle">{children}</p>;
 }
 
 export function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
-  return (
-    <Reveal className="mx-auto mb-10 max-w-2xl text-center md:mb-14">
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="text-3xl font-semibold text-balance md:text-4xl md:leading-[1.2]">{title}</h2>
-      <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground">{text}</p>
-    </Reveal>
-  );
+  return <Reveal className="mx-auto mb-10 max-w-2xl text-center md:mb-14"><Eyebrow>{eyebrow}</Eyebrow><h2 className="text-3xl font-semibold text-balance md:text-4xl md:leading-[1.2]">{title}</h2><p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground">{text}</p></Reveal>;
 }
 
 export function Chip({ children }: { children: ReactNode }) {
-  return (
-    <span className="inline-flex items-center rounded-md border border-border bg-elevated px-2 py-1 font-mono text-[11px] text-muted-foreground">
-      {children}
-    </span>
-  );
+  return <span className="inline-flex items-center rounded-md border border-border bg-elevated px-2 py-1 font-mono text-[11px] text-muted-foreground">{children}</span>;
 }
 
 export function PageHeader({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
-  return (
-    <header className="relative overflow-hidden border-b border-border">
-      <div className="pointer-events-none absolute inset-0 glow-top" />
-      <div className="relative mx-auto max-w-6xl px-5 pb-12 pt-36 text-center md:pt-44">
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">{title}</h1>
-        <p className="mx-auto mt-4 max-w-xl text-muted-foreground">{text}</p>
-      </div>
-    </header>
-  );
+  return <header className="relative overflow-hidden border-b border-border"><div className="pointer-events-none absolute inset-0 glow-top" /><div className="relative mx-auto max-w-6xl px-5 pb-10 pt-32 text-center md:pt-40"><Eyebrow>{eyebrow}</Eyebrow><h1 className="text-4xl font-semibold tracking-tight md:text-5xl">{title}</h1><p className="mx-auto mt-4 max-w-xl text-muted-foreground">{text}</p></div></header>;
 }
