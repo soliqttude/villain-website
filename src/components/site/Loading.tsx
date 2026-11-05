@@ -19,12 +19,13 @@ export function SiteLoading() {
       {opening && (
         <div className="site-opening pointer-events-none fixed inset-0 z-[100] grid place-items-center bg-background" aria-hidden="true">
           <div className="flex flex-col items-center gap-6">
-            <div className="opening-mark grid size-16 place-items-center rounded-lg border border-border-strong bg-elevated">
+            <div className="opening-mark flex items-center gap-2.5">
               <svg viewBox="0 0 24 24" className="size-9 text-foreground" fill="currentColor">
                 <path d="M3 4h4.2L12 15.6 16.8 4H21l-7.4 16h-3.2L3 4Z" />
               </svg>
+              <span className="text-2xl font-semibold">villain</span>
             </div>
-            <span className="opening-name text-sm font-semibold">VILLAIN</span>
+            <span className="opening-name text-sm text-subtle">Loading villain</span>
             <div className="h-px w-28 overflow-hidden bg-border-strong">
               <div className="opening-progress h-full w-full origin-left bg-foreground" />
             </div>
