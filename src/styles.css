@@ -46,41 +46,40 @@
 }
 
 :root {
-  --radius: 0.5rem;
-  --background: oklch(0.135 0.007 190);
-  --section: oklch(0.15 0.007 190);
-  --card: oklch(0.175 0.01 190);
-  --elevated: oklch(0.235 0.015 190);
-  --foreground: oklch(0.94 0.002 286);        /* #EDEDEE */
+  --radius: 0.75rem;
+  --background: oklch(0.125 0.004 260);
+  --section: oklch(0.145 0.005 260);
+  --card: oklch(0.172 0.006 260);
+  --elevated: oklch(0.225 0.008 260);
+  --foreground: oklch(0.955 0.003 260);
   --card-foreground: var(--foreground);
   --popover: var(--elevated);
   --popover-foreground: var(--foreground);
-  --primary: oklch(0.82 0.045 195);
-  --primary-foreground: oklch(0.15 0.015 190);
+  /* Slate accent from the supplied design. */
+  --primary: oklch(0.66 0.02 255);
+  --primary-foreground: oklch(0.14 0.005 260);
   --secondary: var(--elevated);
   --secondary-foreground: var(--foreground);
   --muted: var(--elevated);
-  --muted-foreground: oklch(0.7 0.008 286);   /* #A0A0A6 */
-  --subtle: oklch(0.62 0.012 190);
+  --muted-foreground: oklch(0.72 0.01 260);
+  --subtle: oklch(0.6 0.012 260);
   --accent: var(--elevated);
   --accent-foreground: var(--foreground);
   --oxblood: var(--primary);
-  --oxblood-soft: oklch(0.82 0.045 195 / 0.12);
+  --oxblood-soft: oklch(0.66 0.02 255 / 0.14);
   --destructive: oklch(0.5 0.15 20);
   --destructive-foreground: var(--foreground);
-  --border: oklch(0.82 0.045 195 / 0.09);
-  --border-strong: oklch(0.82 0.045 195 / 0.22);
+  --border: oklch(1 0 0 / 0.07);
+  --border-strong: oklch(1 0 0 / 0.16);
   --input: oklch(1 0 0 / 0.08);
-  --ring: oklch(1 0 0 / 0.2);
-  --discord: oklch(0.29 0.008 270);
-  --discord-side: oklch(0.255 0.008 270);
-  --discord-rail: oklch(0.21 0.008 270);
-  --discord-embed: oklch(0.255 0.008 270);
-  --online: oklch(0.7 0.14 150);
-  --glow-oxblood: none;
+  --ring: oklch(1 0 0 / 0.25);
+  --discord: oklch(0.285 0.008 270);
+  --discord-side: oklch(0.25 0.008 270);
+  --discord-rail: oklch(0.205 0.008 270);
+  --discord-embed: oklch(0.25 0.008 270);
+  --online: oklch(0.72 0.15 150);
+  --glow-oxblood: radial-gradient(60% 70% at 50% 0%, oklch(0.66 0.02 255 / 0.16), transparent 70%);
   --shadow-feature: 0 8px 30px oklch(0 0 0 / 0.25);
-  --hero-shade: linear-gradient(to right, var(--background) 0%, transparent 85%);
-  --hero-fade: linear-gradient(to bottom, transparent 75%, var(--background));
 }
 
 @layer base {
@@ -107,6 +106,12 @@
   mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 75%);
 }
 
+@utility hero-glow {
+  background-image:
+    radial-gradient(50% 55% at 50% 0%, oklch(0.66 0.02 255 / 0.2), transparent 72%),
+    radial-gradient(40% 40% at 85% 30%, oklch(0.66 0.02 255 / 0.07), transparent 70%);
+}
+
 @utility reveal {
   opacity: 0;
   transform: translateY(14px);
@@ -122,12 +127,14 @@
   &:hover { border-color: var(--border-strong); background: color-mix(in oklab, var(--card) 85%, var(--elevated)); }
 }
 
-.hero-stage::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: var(--hero-shade), var(--hero-fade); }
-.hero-art { opacity: 0.8; object-position: 62% center; }
-@media (max-width: 767px) {
-  .hero-art { opacity: 0.45; object-position: 58% center; }
-}
-
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 38s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes eq { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
+.eq-bar { transform-origin: bottom; animation: eq 1.1s ease-in-out infinite; }
+.eq-bar:nth-child(2) { animation-delay: -0.3s; }
+.eq-bar:nth-child(3) { animation-delay: -0.6s; }
+.eq-bar:nth-child(4) { animation-delay: -0.9s; }
 .feature-tag { box-shadow: var(--shadow-feature); animation: feature-drift 6s ease-in-out infinite; }
 .feature-tag:nth-child(2) { animation-delay: -2s; }
 .feature-tag:nth-child(3) { animation-delay: -4s; }
@@ -167,7 +174,7 @@
   html { scroll-behavior: auto; }
   .site-opening { display: none; }
   .page-arrival, .navigation-progress { animation: none; }
-  .feature-tag { animation: none; }
+  .feature-tag, .marquee-track, .eq-bar { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
