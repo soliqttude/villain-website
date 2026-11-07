@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum AccountStatus {
+  OFFLINE
+  STARTING
+  ONLINE
+  ERROR
+}
+
+model User {
+  id                String    @id @default(cuid())
+  email             String?   @unique
+  passwordHash      String?
+  discordId         String?   @unique
+  discordUsername   String?
+  discordAvatar     String?
+  role              Role      @default(USER)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  lastLoginAt       DateTime?
+  lastLoginIp       String?
+
+  accounts          Account[]
+  sessions          Session[]
+  actionLogs        ActionLog[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String        @id @default(cuid())
+  userId            String
+  label             String        @default("Main")
+  tokenEncrypted    String
+  prefix            String        @default(".")
+  status            AccountStatus @default(OFFLINE)
+  lastReadyAt       DateTime?
+  lastError         String?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  // Presence
+  presenceEnabled   Boolean       @default(false)
+  presenceType      String?       // PLAYING | WATCHING | LISTENING | COMPETING | CUSTOM
+  presenceName      String?
+  presenceDetails   String?
+  presenceState     String?
+
+  user              User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Session {
+  id                String    @id @default(cuid())
+  userId            String
+  token             String    @unique
+  ipAddress         String?
+  userAgent         String?
+  expiresAt         DateTime
+  createdAt         DateTime  @default(now())
+
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model ActionLog {
+  id                String    @id @default(cuid())
+  userId            String?
+  action            String    // LOGIN, ADD_ACCOUNT, RESTART, DELETE_ACCOUNT, etc.
+  ipAddress         String?
+  userAgent         String?
+  metadata          Json?
+  createdAt         DateTime  @default(now())
+
+  user              User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("action_logs")
+}
